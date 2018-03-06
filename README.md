@@ -1,10 +1,10 @@
 # outsourced-employee-examination
 
-> 淘宝-新制造 前端开发外包人员基础水平考核试题
+> 小型的前端面试计分项目
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
