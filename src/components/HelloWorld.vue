@@ -4,23 +4,24 @@
   </div>
 </template>
 <script>
-import questions from '../questions'
-import Question from './question/question'
+import questions from '../questions';
+import Question from './question/question';
 export default {
-  data () {
+  data() {
     return {
       questions: questions
-    }
+    };
   },
   components: {
     Question
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {

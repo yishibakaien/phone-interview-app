@@ -2,18 +2,17 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <h1 class="title">淘宝新制造-外包人员第一轮电话面试题目</h1>
-    <div>tip: 点击答案，绿色背景为正确，得分20以上合格</div>
+    <div>tip: 点击答案，绿色背景表示回答正确</div>
     <router-view/>
   </div>
 </template>
 <script>
 export default {
   name: 'App'
-}
+};
 </script>
 
 <style>
-
 .title {
   font-size: 24px;
 }

@@ -1,6 +1,6 @@
 # outsourced-employee-examination
 
-> 小型的前端面试计分项目
+> 小型前端开发电话面试计分系统
 
 ## Build Setup
 
