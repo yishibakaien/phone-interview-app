@@ -19,9 +19,9 @@ export default {
     }
   },
   methods: {
-    toggleActive(ele) {
-      // console.log(ele.target.className)
-      let target = ele.target;
+    toggleActive(evt) {
+      // console.log(evt.target.className)
+      let target = evt.target;
       let active = target.className.indexOf('active') !== -1;
       if (active) {
         target.className = target.className.replace(/\s*active\s*/g, '');
