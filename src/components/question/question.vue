@@ -1,17 +1,23 @@
 <template>
   <div class="question-wrapper">
     <!-- css部分 -->
-    <h2 class="part">一、css 基础知识部分</h2>
-    <div class="question-item" v-for="(item, index) in css" :key="index" :level="item.level">
-      <div class="question-title">{{index + 1}}、{{item.question}}</div>
-      <anwser :anwser="item.anwser"></anwser>
+    <div class="css-container">
+      <h2 class="part">一、css 基础知识部分</h2>
+      <div class="question-item" v-for="(item, index) in css" :key="index" :level="item.level">
+        <div class="question-title">{{index + 1}}、{{item.question}}</div>
+        <anwser :anwser="item.anwser"></anwser>
+      </div>
     </div>
+
     <!-- js 部分 -->
-    <h2 class="part">二、javaScript 基础知识部分</h2>
-    <div class="question-item" v-for="(item, index) in js" :key="'item_' + index" :level="item.level">
-      <div class="question-title">{{index + 1}}、{{item.question}}</div>
-      <anwser :anwser="item.anwser"></anwser>
+    <div class="js-container">
+      <h2 class="part">二、javaScript 基础知识部分</h2>
+      <div class="question-item" v-for="(item, index) in js" :key="'item_' + index" :level="item.level">
+        <div class="question-title">{{index + 1}}、{{item.question}}</div>
+        <anwser :anwser="item.anwser"></anwser>
+      </div>
     </div>
+
     <button class="button" @click="count">计算得分</button>
   </div>
 </template>
@@ -32,12 +38,50 @@ export default {
   },
   methods: {
     count() {
-      let items = document.querySelectorAll('.active');
-      items = Array.from(items);
-      let count = items
-        .map(item => +item.getAttribute('data-scroe'))
+      let cssItems = document.querySelectorAll('.css-container .anwser-item');
+      cssItems = Array.from(cssItems);
+
+      let jsItems = document.querySelectorAll('.js-container .anwser-item');
+      jsItems = Array.from(jsItems);
+
+      let cssCount = cssItems
+        .map(item => {
+          if (item.className.indexOf('active') !== -1) {
+            return item.getAttribute('data-score');
+          } else {
+            return '0';
+          }
+        })
+        .join('');
+      let cssScore = cssCount
+        .split('')
+        .map(item => +item)
         .reduce((pre, cur) => pre + cur, 0);
-      alert('最终得分：' + count);
+
+      let jsCount = jsItems
+        .map(item => {
+          if (item.className.indexOf('active') !== -1) {
+            return item.getAttribute('data-score');
+          } else {
+            return '0';
+          }
+        })
+        .join('');
+      let jsScore = jsCount
+        .split('')
+        .map(item => +item)
+        .reduce((pre, cur) => pre + cur, 0);
+
+      let totalScore = Array.from(document.querySelectorAll('.anwser-item'))
+        .map(item => +item.getAttribute('data-score'))
+        .reduce((pre, cur) => pre + cur, 0);
+
+      console.log('totalScore', totalScore);
+
+      let result = (cssScore + jsScore) / totalScore;
+      result = result * 100;
+      result = Math.round(result);
+      alert(`最终得分：${cssCount}/${jsCount}/(${result})`);
     }
   },
   components: {

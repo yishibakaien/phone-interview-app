@@ -4,7 +4,7 @@
       class="anwser-item"
       v-for="(item, index) in anwser"
       :key="index"
-      :data-scroe="item.score"
+      :data-score="item.score"
       @click="toggleActive"
     >
       {{item.desc}}
